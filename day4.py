@@ -1,6 +1,6 @@
 import re
 
-path = 'C:\\Users\\alnav\\Documents\\Projects\Advent of code 2024\\Input\\test.txt'
+path = 'C:\\Users\\alnav\\Documents\\Projects\Advent of code 2024\\Input\\Input_day_4'
 
 def convert_file_to_2d_array(file_path):
     # Read the file content
@@ -80,23 +80,95 @@ def count_xmas(input_list, orientation):
                 temp_list_row = []
                 if input_list[i][j] == "X":
                     temp_list_row.append("X")
-                    if((input_list[i+1][j+1] == "M") and (i+1 < len(input_list)) and (j+1 < len(input_list[0]))):
-                        temp_list_row.append("M")
-                        if(input_list[i+2][j+2] == "A" and i+2 < len(input_list) and j+2 < len(input_list[0])):
-                            temp_list_row.append("A")
-                            if(input_list[i+3][j+3] == "S" and i+3 < len(input_list) and j+3 < len(input_list[0])):
-                                temp_list_row.append("S")
-                                temp_list.append(temp_list_row)
+                    if(((i+1) < len(input_list)) and ((j+1) < len(input_list[0]))):
+                        if(input_list[i+1][j+1] == "M"):
+                            temp_list_row.append("M")
+                            if(((i+2) < len(input_list)) and ((j+2) < len(input_list[0]))):
+                                if(input_list[i+2][j+2] == "A"):
+                                    temp_list_row.append("A")
+                                    if(((i+3) < len(input_list)) and ((j+3) < len(input_list[0]))):
+                                        if(input_list[i+3][j+3] == "S"):
+                                            temp_list_row.append("S")
+                                            temp_list.append(temp_list_row)
 
-        #print(temp_list)
-            
+        i = 0
+        j = 0
+
+        for i in range(len(temp_list)): 
+            if(extract_xmas(''.join(temp_list[i]))):
+                xmas_strings.append(extract_xmas(''.join(temp_list[i])))
 
     elif orientation == "diagonally_ul":
-        None
+        for i in range(len(input_list)-1, 0, -1):
+            for j in range(len(input_list[0])-1, 0, -1):
+                temp_list_row = []
+                if input_list[i][j] == "X":
+                    temp_list_row.append("X")
+                    if(((i-1) >= 0) and ((j-1) >= 0)):
+                        if(input_list[i-1][j-1] == "M"):
+                            temp_list_row.append("M")
+                            if(((i-2) >= 0) and ((j-2) >= 0)):
+                                if(input_list[i-2][j-2] == "A"):
+                                    temp_list_row.append("A")
+                                    if(((i-3) >= 0) and ((j-3) >= 0)):
+                                        if(input_list[i-3][j-3] == "S"):
+                                            temp_list_row.append("S")
+                                            temp_list.append(temp_list_row)
+
+        i = 0
+        j = 0
+
+        for i in range(len(temp_list)): 
+            if(extract_xmas(''.join(temp_list[i]))):
+                xmas_strings.append(extract_xmas(''.join(temp_list[i])))
+
     elif orientation == "diagonally_dl":
-        None
+        for i in range(len(input_list)):
+            for j in range(len(input_list[0])-1, 0, -1):
+                temp_list_row = []
+                if input_list[i][j] == "X":
+                    temp_list_row.append("X")
+                    if(((i+1) < len(input_list)) and ((j-1) >= 0)):
+                        if(input_list[i+1][j-1] == "M"):
+                            temp_list_row.append("M")
+                            if(((i+2) < len(input_list)) and ((j-2) >= 0)):
+                                if(input_list[i+2][j-2] == "A"):
+                                    temp_list_row.append("A")
+                                    if(((i+3) < len(input_list)) and ((j-3) >= 0)):
+                                        if(input_list[i+3][j-3] == "S"):
+                                            temp_list_row.append("S")
+                                            temp_list.append(temp_list_row)
+
+        i = 0
+        j = 0
+
+        for i in range(len(temp_list)): 
+            if(extract_xmas(''.join(temp_list[i]))):
+                xmas_strings.append(extract_xmas(''.join(temp_list[i])))
+
     elif orientation == "diagonally_ur":
-        None
+        for i in range(len(input_list)-1, 0, -1):
+            for j in range(len(input_list[0])):
+                temp_list_row = []
+                if input_list[i][j] == "X":
+                    temp_list_row.append("X")
+                    if(((i-1) >= 0) and ((j+1) < len(input_list[0]))):
+                        if(input_list[i-1][j+1] == "M"):
+                            temp_list_row.append("M")
+                            if(((i-2) >= 0) and ((j+2) < len(input_list[0]))):
+                                if(input_list[i-2][j+2] == "A"):
+                                    temp_list_row.append("A")
+                                    if(((i-3) >= 0) and ((j+3) < len(input_list[0]))):
+                                        if(input_list[i-3][j+3] == "S"):
+                                            temp_list_row.append("S")
+                                            temp_list.append(temp_list_row)
+
+        i = 0
+        j = 0
+
+        for i in range(len(temp_list)): 
+            if(extract_xmas(''.join(temp_list[i]))):
+                xmas_strings.append(extract_xmas(''.join(temp_list[i])))
 
 # Horizontal
 # for i in range(len(result)):
